@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="smallText">15sp</dimen>
+    <dimen name="mediumText">22sp</dimen>
+    <dimen name="largeText">31sp</dimen>
+
+    <dimen name="smallImgHeight">50dp</dimen>
+    <dimen name="smallImgWidth">50dp</dimen>
+
+    <dimen name="mediumImgHeight">70dp</dimen>
+    <dimen name="mediumImgWidth">70dp</dimen>
+
+    <dimen name="largeImgHeight">100dp</dimen>
+    <dimen name="largeImgWidth">100dp</dimen>
+</resources>
