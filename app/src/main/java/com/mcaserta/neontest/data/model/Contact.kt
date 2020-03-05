@@ -1,3 +1,3 @@
 package com.mcaserta.neontest.data.model
 
-data class Contact (var name: String, var phone: String)
+data class Contact (var id: Int, var name: String, var phone: String, var photoUrl: String)
