@@ -8,6 +8,7 @@ import com.mcaserta.neontest.R
 import com.mcaserta.neontest.data.model.User
 import com.mcaserta.neontest.databinding.ActivityHomeBinding
 import com.mcaserta.neontest.ui.config.gotoContactList
+import com.mcaserta.neontest.utils.SharedPreferencesUtil
 import com.mcaserta.neontest.viewmodel.UserViewModel
 import java.util.*
 
@@ -26,6 +27,27 @@ class HomeActivity : AppCompatActivity(), Observer {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home)
         binding.viewModel = viewModel
         viewModel.addObserver(this)
+
+        // Obter o token
+        viewModel.getToken()
+
+        // Observables da chamada de token
+        setObservables()
+    }
+
+    private fun setObservables() {
+        // Erro
+        viewModel.error.observe(this, androidx.lifecycle.Observer {
+            if (it) {
+                // Retry até obter o token
+                viewModel.getToken()
+            }
+        })
+
+        // Sucesso
+        viewModel.response.observe(this, androidx.lifecycle.Observer {
+            SharedPreferencesUtil(this).save(SharedPreferencesUtil.SHARED_TOKEN, it)
+        })
     }
 
     // Update do observer - ViewModel

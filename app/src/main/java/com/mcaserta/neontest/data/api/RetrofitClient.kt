@@ -1,5 +1,6 @@
 package com.mcaserta.neontest.data.api
 
+import com.google.gson.GsonBuilder
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -8,9 +9,10 @@ import retrofit2.converter.gson.GsonConverterFactory
  */
 class RetrofitClient {
     companion object {
+        val gson = GsonBuilder().setLenient().create()
         private val retrofit = Retrofit.Builder()
             .baseUrl("https://de6a863a-a5b1-4284-9612-5eaf0f9ec644.mock.pstmn.io/")
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
 
         fun getInstance(): ApiService {
