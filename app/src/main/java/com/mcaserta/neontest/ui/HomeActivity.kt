@@ -7,6 +7,7 @@ import androidx.databinding.DataBindingUtil
 import com.mcaserta.neontest.R
 import com.mcaserta.neontest.data.model.User
 import com.mcaserta.neontest.databinding.ActivityHomeBinding
+import com.mcaserta.neontest.ui.config.gotoContactList
 import com.mcaserta.neontest.viewmodel.UserViewModel
 import java.util.*
 
@@ -31,7 +32,7 @@ class HomeActivity : AppCompatActivity(), Observer {
     override fun update(o: Observable?, arg: Any?) {
         if (arg != null) {
             when (arg.toString()) {
-                UserViewModel.SHOW_CONTACT_LIST -> { Log.d("CLICKED", "SHOW_CONTACT_LIST")}
+                UserViewModel.SHOW_CONTACT_LIST -> gotoContactList()
                 UserViewModel.SHOW_TRANSFER_HISTORY -> null // TODO enviar para a tela de histórico de transações
             }
         }
