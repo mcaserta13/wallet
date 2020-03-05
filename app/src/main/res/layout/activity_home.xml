@@ -25,48 +25,75 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <ProgressBar
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvImgProfile"
                 android:layout_width="@dimen/largeImgWidth"
                 android:layout_height="@dimen/largeImgHeight"
-                app:layout_constraintStart_toStartOf="@id/imgProfile"
-                app:layout_constraintEnd_toEndOf="@id/imgProfile"
-                app:layout_constraintTop_toTopOf="@id/imgProfile"
-                app:layout_constraintBottom_toBottomOf="@id/imgProfile"/>
-
-            <ImageView
-                android:id="@+id/imgProfile"
-                android:layout_width="@dimen/largeImgWidth"
-                android:layout_height="@dimen/largeImgHeight"
-                android:src="@drawable/mcaserta"
                 android:layout_gravity="center"
-                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginBottom="@dimen/smallMargin"
+                app:cardCornerRadius="@dimen/circleImgRadius"
+                app:layout_constraintBottom_toTopOf="@id/tvUserName"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/tvUserName"/>
+                app:layout_constraintStart_toStartOf="parent">
+
+                <ImageView
+                    android:id="@+id/imgProfile"
+                    android:layout_width="@dimen/largeImgWidth"
+                    android:layout_height="@dimen/largeImgHeight"
+                    android:background="@drawable/pb_img_profile_border"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/mcaserta" />
+
+            </androidx.cardview.widget.CardView>
 
             <TextView
                 android:id="@+id/tvUserName"
                 style="@style/DefaultTitleTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{viewModel.user.name}"
-                tools:text="Nome do Usuário"
                 android:layout_gravity="center"
-                app:layout_constraintStart_toStartOf="parent"
+                android:text="@{viewModel.user.name}"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                tools:text="Nome do Usuário" />
 
             <TextView
                 style="@style/DefaultSubtitleTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{viewModel.user.email}"
-                tools:text="email@usuario.com"
                 android:layout_gravity="center"
-                app:layout_constraintStart_toStartOf="parent"
+                android:text="@{viewModel.user.email}"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvUserName"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvUserName"
+                tools:text="email@usuario.com" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintWidth_percent="0.85"
+            android:layout_marginBottom="@dimen/mediumMargin"
+            android:orientation="vertical">
+
+            <Button
+                style="@style/ActionRoundedButton"
+                android:layout_width="match_parent"
+                android:text="@string/send_money"
+                android:layout_marginBottom="@dimen/mediumMargin"
+                android:onClick="@{ () -> viewModel.showContactList()}"/>
+
+            <Button
+                style="@style/ActionRoundedButton"
+                android:layout_width="match_parent"
+                android:text="@string/transaction_history"
+                android:onClick="@{ () -> viewModel.showTransferHistory()}"/>
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

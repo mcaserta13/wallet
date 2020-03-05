@@ -8,4 +8,6 @@
     <color name="colorGradientStart">#282D39</color>
 
     <color name="colorDefaultTv">#FFFFFF</color>
+
+    <color name="colorActionButton">#00a5a8</color>
 </resources>

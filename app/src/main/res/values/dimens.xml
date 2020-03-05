@@ -10,6 +10,14 @@
     <dimen name="mediumImgHeight">70dp</dimen>
     <dimen name="mediumImgWidth">70dp</dimen>
 
-    <dimen name="largeImgHeight">100dp</dimen>
-    <dimen name="largeImgWidth">100dp</dimen>
+    <dimen name="largeImgHeight">140dp</dimen>
+    <dimen name="largeImgWidth">140dp</dimen>
+
+    <dimen name="circleImgRadius">250dp</dimen>
+
+    <dimen name="actionButtonHeight">60dp</dimen>
+    <!-- Margens e Paddings -->
+    <dimen name="smallMargin">10dp</dimen>
+    <dimen name="mediumMargin">20dp</dimen>
+    <dimen name="largeMargin">40dp</dimen>
 </resources>

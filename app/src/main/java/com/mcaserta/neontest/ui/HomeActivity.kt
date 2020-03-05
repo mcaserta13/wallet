@@ -2,6 +2,7 @@ package com.mcaserta.neontest.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.databinding.DataBindingUtil
 import com.mcaserta.neontest.R
 import com.mcaserta.neontest.data.model.User
@@ -30,7 +31,7 @@ class HomeActivity : AppCompatActivity(), Observer {
     override fun update(o: Observable?, arg: Any?) {
         if (arg != null) {
             when (arg.toString()) {
-                UserViewModel.SHOW_CONTACT_LIST -> null // TODO enviar para a tela de contatos
+                UserViewModel.SHOW_CONTACT_LIST -> { Log.d("CLICKED", "SHOW_CONTACT_LIST")}
                 UserViewModel.SHOW_TRANSFER_HISTORY -> null // TODO enviar para a tela de histórico de transações
             }
         }
