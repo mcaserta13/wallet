@@ -7,6 +7,7 @@ import java.util.*
 class ContactViewModel : Observable() {
     companion object {
         const val SHOW_ERROR = "show_error"
+        const val CONTACT_LIST_UPDATED = "contact_list_updated"
     }
 
     val contactList = MutableLiveData<ArrayList<Contact>>()
@@ -48,13 +49,15 @@ class ContactViewModel : Observable() {
             val contact = Contact(
                 i,
                 nameList.random() + " " + lastNameList.random(),
-                "119$phone",
+                "(11) 9$phone",
                 "photo"
             )
 
             auxList.add(contact)
         }
 
-        contactList.postValue(auxList)
+        contactList.value = auxList
+        setChanged()
+        notifyObservers(CONTACT_LIST_UPDATED)
     }
 }

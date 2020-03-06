@@ -40,7 +40,6 @@
                     android:id="@+id/imgProfile"
                     android:layout_width="@dimen/largeImgWidth"
                     android:layout_height="@dimen/largeImgHeight"
-                    android:background="@drawable/pb_img_profile_border"
                     android:scaleType="centerCrop"
                     android:src="@drawable/mcaserta" />
 

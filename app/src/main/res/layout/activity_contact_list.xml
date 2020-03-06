@@ -12,5 +12,11 @@
         android:layout_height="match_parent"
         tools:context=".ui.ContactListActivity">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvContactList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/contact_item"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

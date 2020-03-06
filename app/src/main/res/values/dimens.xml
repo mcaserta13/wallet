@@ -20,4 +20,8 @@
     <dimen name="smallMargin">10dp</dimen>
     <dimen name="mediumMargin">20dp</dimen>
     <dimen name="largeMargin">40dp</dimen>
+
+    <dimen name="smallPadding">10dp</dimen>
+    <dimen name="mediumPadding">20dp</dimen>
+    <dimen name="largePadding">40dp</dimen>
 </resources>
