@@ -1,6 +1,7 @@
 package com.mcaserta.neontest.ui.adapter
 
 import android.content.Context
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -23,12 +24,11 @@ class ContactListAdapter(private val items: List<Contact>, val context: Context)
         fun bind(item: Contact) {
             binding.tvContactName.text = item.name
             binding.tvContactPhone.text = item.phone
-            binding.imgProfile.setImageResource(getRandomImage())
+            binding.imgProfile.setImageDrawable(setImage(item))
         }
 
-        private fun getRandomImage(): Int {
-            val imageList = arrayOf("amy", "belchior", "belo", "bob", "faustinho", "joey", "mollie", "neto", "rochelle", "rita")
-            return context.resources.getIdentifier(imageList.random() , "drawable", context.packageName)
+        private fun setImage(item: Contact): Drawable {
+            return Drawable.createFromStream(context.assets.open("img/" + item.photoUrl), null)
         }
     }
 }

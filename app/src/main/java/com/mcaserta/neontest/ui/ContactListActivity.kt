@@ -17,7 +17,7 @@ import java.util.*
 class ContactListActivity : NavigationActivity(), Observer {
 
     private lateinit var binding: ActivityContactListBinding
-    var viewModel = ContactViewModel()
+    var viewModel = ContactViewModel(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
