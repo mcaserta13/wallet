@@ -1,14 +1,15 @@
 package com.mcaserta.neontest.viewmodel
 
 import android.content.Context
+import android.util.Log
 import android.widget.ImageView
 import androidx.annotation.IdRes
 import androidx.databinding.BindingAdapter
 import androidx.databinding.ObservableField
 import com.mcaserta.neontest.data.model.Contact
 import com.mcaserta.neontest.utils.Utils
+import com.mcaserta.neontest.utils.keepOnlyNumbers
 import java.util.*
-
 
 class SendMoneyViewModel(private val context: Context): Observable() {
 
@@ -25,9 +26,15 @@ class SendMoneyViewModel(private val context: Context): Observable() {
 
     var moneyValue = ObservableField<String>()
     var contact: Contact? = null
+    var isValidValue = ObservableField<Boolean>(false)
 
     fun onValueChanged(text: CharSequence?) {
         if (!text.isNullOrEmpty()) {
+
+            if (text.toString().keepOnlyNumbers().toIntOrNull() != null) {
+                isValidValue.set(text.toString().keepOnlyNumbers().toInt() > 0)
+            }
+
             moneyValue.set(Utils.formatMoney(text.toString(), context))
             setChanged()
             notifyObservers(MONEY_VALUE_CHANGED)

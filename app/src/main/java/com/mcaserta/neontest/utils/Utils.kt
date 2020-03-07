@@ -28,3 +28,7 @@ class Utils {
         }
     }
 }
+
+fun String.keepOnlyNumbers(): String {
+    return this.replace(".", "").replace(",", "")
+}
