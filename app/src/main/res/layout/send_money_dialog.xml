@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.mcaserta.neontest.viewmodel.SendMoneyViewModel" />
+
+        <variable
+            name="ctx"
+            type="android.content.Context" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:bind="http://schemas.android.com/bind"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            app:cardCornerRadius="@dimen/cardViewAlertRadius"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/default_gradient"
+                android:padding="@dimen/largePadding">
+
+                <ImageButton
+                    android:layout_width="@dimen/smallButtonWidth"
+                    android:layout_height="@dimen/smallButtonHeight"
+                    android:background="@drawable/ic_close"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:onClick="@{ () -> viewModel.closeDialog()}"/>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvImgContact"
+                    android:layout_width="@dimen/mediumImgWidth"
+                    android:layout_height="@dimen/mediumImgHeight"
+                    android:layout_gravity="center"
+                    app:cardCornerRadius="@dimen/circleImgRadius"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/imgContact"
+                        android:layout_width="@dimen/mediumImgWidth"
+                        android:layout_height="@dimen/mediumImgHeight"
+                        bind:load_image="@{ctx}"
+                        bind:load_image_url="@{viewModel.contact.photoUrl}"
+                        tools:src="@drawable/mcaserta" />
+
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout
+                    android:id="@+id/llContactContent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/smallMargin"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cvImgContact">
+
+                    <TextView
+                        style="@style/DefaultTitleTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@{viewModel.contact.name}"
+                        tools:text="Nome do Usuário" />
+
+                    <TextView
+                        style="@style/DefaultSubtitleTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@{viewModel.contact.phone}"
+                        tools:text="(11) 99999-9999" />
+                </LinearLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvValue"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/mediumMargin"
+                    app:cardBackgroundColor="@color/colorWhite"
+                    app:cardCornerRadius="@dimen/cardViewRadius"
+                    app:cardElevation="0dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/llContactContent"
+                    app:layout_constraintWidth_percent="0.80">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@android:color/transparent">
+
+                        <TextView
+                            android:id="@+id/tvCurrency"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-black"
+                            android:text="R$"
+                            android:textColor="@color/colorActionButton"
+                            android:textSize="@dimen/extraLargeText"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <EditText
+                            android:id="@+id/edtMoney"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/smallMargin"
+                            android:background="@android:color/transparent"
+                            android:fontFamily="sans-serif-black"
+                            android:hint="0,00"
+                            android:inputType="number"
+                            android:maxLength="6"
+                            android:onTextChanged="@{(text, start, before, count) -> viewModel.onValueChanged(text)}"
+                            android:text="@{viewModel.moneyValue}"
+                            android:textColor="@color/colorActionButton"
+                            android:textColorHint="@color/colorActionButton"
+                            android:textSize="@dimen/extraLargeText"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/tvCurrency"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <Button
+                    style="@style/ActionRoundedButton"
+                    android:layout_width="0dp"
+                    android:layout_marginTop="@dimen/mediumMargin"
+                    android:layout_marginBottom="@dimen/mediumMargin"
+                    android:onClick="@{ () -> viewModel.sendMoney()}"
+                    android:text="@string/send_money"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cvValue"
+                    app:layout_constraintWidth_percent="0.80" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

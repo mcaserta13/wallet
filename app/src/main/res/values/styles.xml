@@ -20,5 +20,4 @@
         <item name="android:background">@drawable/round_button_ripple_bg</item>
         <item name="android:layout_height">@dimen/actionButtonHeight</item>
     </style>
-
 </resources>

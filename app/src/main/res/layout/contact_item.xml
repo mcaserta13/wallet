@@ -2,53 +2,64 @@
 <layout>
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/clContactItemLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        xmlns:tools="http://schemas.android.com/tools"
         android:padding="@dimen/smallMargin"
         android:foreground="?android:attr/selectableItemBackground">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cvImgProfile"
-            android:layout_width="@dimen/mediumImgWidth"
-            android:layout_height="@dimen/mediumImgHeight"
-            android:layout_gravity="center"
-            app:cardCornerRadius="@dimen/circleImgRadius"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintBottom_toBottomOf="parent">
 
-            <ImageView
-                android:id="@+id/imgProfile"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvImgProfile"
                 android:layout_width="@dimen/mediumImgWidth"
                 android:layout_height="@dimen/mediumImgHeight"
-                android:scaleType="centerCrop"
-                android:src="@drawable/mcaserta" />
+                android:layout_gravity="center"
+                app:cardCornerRadius="@dimen/circleImgRadius"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
 
-        </androidx.cardview.widget.CardView>
+                <ImageView
+                    android:id="@+id/imgProfile"
+                    android:layout_width="@dimen/mediumImgWidth"
+                    android:layout_height="@dimen/mediumImgHeight"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/mcaserta" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/smallMargin"
-            app:layout_constraintStart_toEndOf="@id/cvImgProfile"
-            app:layout_constraintTop_toTopOf="@id/cvImgProfile"
-            app:layout_constraintBottom_toBottomOf="@id/cvImgProfile"
-            android:orientation="vertical">
+            </androidx.cardview.widget.CardView>
 
-            <TextView
-                android:id="@+id/tvContactName"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="Nome do Contato"
-                android:textColor="@color/colorActionButton" />
+                android:layout_marginStart="@dimen/smallMargin"
+                app:layout_constraintStart_toEndOf="@id/cvImgProfile"
+                app:layout_constraintTop_toTopOf="@id/cvImgProfile"
+                app:layout_constraintBottom_toBottomOf="@id/cvImgProfile"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tvContactPhone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="(11) 99999-9999"
-                android:textColor="@color/colorActionButton"/>
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/tvContactName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Nome do Contato"
+                    android:textColor="@color/colorActionButton" />
+
+                <TextView
+                    android:id="@+id/tvContactPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="(11) 99999-9999"
+                    android:textColor="@color/colorActionButton"/>
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

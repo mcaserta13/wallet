@@ -3,6 +3,7 @@
     <dimen name="smallText">15sp</dimen>
     <dimen name="mediumText">22sp</dimen>
     <dimen name="largeText">31sp</dimen>
+    <dimen name="extraLargeText">40sp</dimen>
 
     <dimen name="smallImgHeight">50dp</dimen>
     <dimen name="smallImgWidth">50dp</dimen>
@@ -14,8 +15,15 @@
     <dimen name="largeImgWidth">140dp</dimen>
 
     <dimen name="circleImgRadius">250dp</dimen>
+    <dimen name="cardViewRadius">10dp</dimen>
 
-    <dimen name="actionButtonHeight">60dp</dimen>
+    <dimen name="cardViewAlertRadius">25dp</dimen>
+
+    <dimen name="actionButtonHeight">55dp</dimen>
+
+    <dimen name="smallButtonHeight">20dp</dimen>
+    <dimen name="smallButtonWidth">20dp</dimen>
+
     <!-- Margens e Paddings -->
     <dimen name="smallMargin">10dp</dimen>
     <dimen name="mediumMargin">20dp</dimen>
