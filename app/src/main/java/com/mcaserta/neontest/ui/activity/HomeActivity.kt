@@ -1,4 +1,4 @@
-package com.mcaserta.neontest.ui
+package com.mcaserta.neontest.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -36,14 +36,6 @@ class HomeActivity : AppCompatActivity(), Observer {
     }
 
     private fun setObservables() {
-        // Erro
-        viewModel.error.observe(this, androidx.lifecycle.Observer {
-            if (it) {
-                // Retry até obter o token
-                viewModel.getToken()
-            }
-        })
-
         // Sucesso
         viewModel.response.observe(this, androidx.lifecycle.Observer {
             SharedPreferencesUtil(this).save(SharedPreferencesUtil.SHARED_TOKEN, it)

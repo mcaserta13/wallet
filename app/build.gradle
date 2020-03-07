@@ -45,10 +45,14 @@ dependencies {
     // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.3.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation("com.squareup.okhttp3:logging-interceptor:4.4.0")
 
     // Dagger
     implementation 'com.google.dagger:dagger:2.13'
     kapt 'com.google.dagger:dagger-compiler:2.13'
+
+    // Lottie animation
+    implementation 'com.airbnb.android:lottie:3.4.0'
 
     implementation 'com.android.support:appcompat-v7:28.1.1'
     implementation 'com.android.support:design:28.1.1'

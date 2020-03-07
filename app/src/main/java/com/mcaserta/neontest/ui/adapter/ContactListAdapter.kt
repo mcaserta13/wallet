@@ -3,14 +3,13 @@ package com.mcaserta.neontest.ui.adapter
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.mcaserta.neontest.R
 import com.mcaserta.neontest.data.model.Contact
 import com.mcaserta.neontest.databinding.ContactItemBinding
-import com.mcaserta.neontest.ui.ContactListActivity
+import com.mcaserta.neontest.ui.activity.ContactListActivity
 
 
 class ContactListAdapter(private val items: List<Contact>, val context: Context) : RecyclerView.Adapter<ContactListAdapter.ViewHolder>() {

@@ -1,4 +1,4 @@
-package com.mcaserta.neontest.ui
+package com.mcaserta.neontest.ui.activity
 
 import android.os.Bundle
 import android.view.MenuItem
