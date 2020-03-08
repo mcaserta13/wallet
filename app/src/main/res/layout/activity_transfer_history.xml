@@ -23,19 +23,31 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:visibility="@{viewModel.isLoading &amp;&amp; !viewModel.isError ? View.VISIBLE : View.GONE, default=gone}"/>
 
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvTransferChart"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginStart="@dimen/smallMargin"
-            android:layout_marginEnd="@dimen/smallMargin"
-            android:layout_marginTop="@dimen/smallMargin"
             app:layout_constraintHeight_percent="0.35"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:visibility="@{viewModel.isLoading &amp;&amp; !viewModel.isError ? View.GONE : View.VISIBLE, default=visible}"/>
+            android:visibility="@{viewModel.isLoading &amp;&amp; !viewModel.isError ? View.GONE : View.VISIBLE, default=visible}">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvChartBackground"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/smallMargin"
+                android:layout_marginEnd="@dimen/smallMargin"
+                android:layout_marginTop="@dimen/smallMargin"
+                android:layout_marginBottom="@dimen/smallImgHeight"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvTransferChart"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/smallMargin"
+                android:layout_marginEnd="@dimen/smallMargin"
+                android:layout_marginTop="@dimen/smallMargin" />
+
+        </RelativeLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvTransferHistory"

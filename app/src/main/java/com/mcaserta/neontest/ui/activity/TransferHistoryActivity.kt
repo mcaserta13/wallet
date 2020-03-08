@@ -11,6 +11,7 @@ import com.mcaserta.neontest.R
 import com.mcaserta.neontest.databinding.ActivityTransferHistoryBinding
 import com.mcaserta.neontest.ui.adapter.TransactionHistoryAdapter
 import com.mcaserta.neontest.ui.adapter.TransferHistoryChartAdapter
+import com.mcaserta.neontest.ui.adapter.TransferHistoryChartBackgroundAdapter
 import com.mcaserta.neontest.utils.SharedPreferencesUtil
 import com.mcaserta.neontest.viewmodel.TransferHistoryViewModel
 import kotlinx.android.synthetic.main.activity_navigation.*
@@ -37,9 +38,17 @@ class TransferHistoryActivity : NavigationActivity(), Observer {
         rvTransferHistory.layoutManager = LinearLayoutManager(this)
         rvTransferChart.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
+        setupRvChartBg()
         // Titulo da tela
         setBarTitle(getString(R.string.transaction_history))
         getTransferList()
+    }
+
+    private fun setupRvChartBg() {
+        val itemDecoration = DividerItemDecoration(this, LinearLayout.VERTICAL)
+        itemDecoration.setDrawable(ColorDrawable(ContextCompat.getColor(this, R.color.colorGradientEnd)))
+        rvChartBackground.layoutManager = LinearLayoutManager(this)
+        rvChartBackground.addItemDecoration(itemDecoration)
     }
 
     private fun getTransferList() {
@@ -54,6 +63,8 @@ class TransferHistoryActivity : NavigationActivity(), Observer {
 
                     // Popular o gráfico
                     rvTransferChart.adapter = TransferHistoryChartAdapter(viewModel.fetchChartDataList(), this)
+
+                    rvChartBackground.adapter = TransferHistoryChartBackgroundAdapter(this)
                 }
             }
         }
