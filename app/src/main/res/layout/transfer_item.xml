@@ -44,7 +44,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/mcaserta" />
+                        tools:src="@drawable/mcaserta" />
 
                 </androidx.cardview.widget.CardView>
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -71,6 +71,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:text="(11) 99999-9999"
+                    android:textColor="@color/colorActionButton"
+                    android:fontFamily="sans-serif-thin"/>
+
+                <TextView
+                    android:id="@+id/tvAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="R$ 1,30"
                     android:textColor="@color/colorActionButton"
                     android:fontFamily="sans-serif-thin"/>
             </LinearLayout>

@@ -52,25 +52,40 @@
                     app:layout_constraintTop_toTopOf="parent"
                     android:onClick="@{ () -> viewModel.closeDialog()}"/>
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cvImgContact"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clImgProfile"
                     android:layout_width="@dimen/mediumImgWidth"
                     android:layout_height="@dimen/mediumImgHeight"
-                    android:layout_gravity="center"
-                    app:cardCornerRadius="@dimen/circleImgRadius"
+                    android:background="@drawable/cardview_img_border"
+                    android:padding="@dimen/imgProfilePadding"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <ImageView
-                        android:id="@+id/imgContact"
-                        android:layout_width="@dimen/mediumImgWidth"
-                        android:layout_height="@dimen/mediumImgHeight"
-                        bind:load_image="@{ctx}"
-                        bind:load_image_url="@{viewModel.contact.photoUrl}"
-                        tools:src="@drawable/mcaserta" />
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cvImgProfile"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:background="@drawable/cardview_img_border"
+                        app:cardCornerRadius="@dimen/circleImgRadius"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent">
 
-                </androidx.cardview.widget.CardView>
+                        <ImageView
+                            android:id="@+id/imgContact"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            bind:load_image="@{ctx}"
+                            bind:load_image_url="@{viewModel.contact.photoUrl}"
+                            tools:src="@drawable/mcaserta" />
+
+
+                    </androidx.cardview.widget.CardView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <LinearLayout
                     android:id="@+id/llContactContent"
@@ -80,7 +95,7 @@
                     android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/cvImgContact">
+                    app:layout_constraintTop_toBottomOf="@id/clImgProfile">
 
                     <TextView
                         style="@style/DefaultTitleTextView"

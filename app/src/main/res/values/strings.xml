@@ -5,4 +5,5 @@
     <string name="transaction_history">Histórico de Envios</string>
     <string name="success_msg">Sucesso! Tudo correu bem por aqui :)</string>
     <string name="error_msg">Acho que algo quebrou por aqui... Vamos consertar, tenta mais tarde, tá?</string>
+    <string name="empty_transfer_list">Não conseguimos recuperar nenhuma transferência, tente novamente mais tarde :)</string>
 </resources>

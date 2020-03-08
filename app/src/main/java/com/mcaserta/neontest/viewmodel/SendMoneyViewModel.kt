@@ -8,6 +8,7 @@ import androidx.databinding.ObservableField
 import com.mcaserta.neontest.R
 import com.mcaserta.neontest.data.model.Contact
 import com.mcaserta.neontest.data.model.Transfer
+import com.mcaserta.neontest.data.repository.TokenRepository
 import com.mcaserta.neontest.data.repository.TransferRepository
 import com.mcaserta.neontest.utils.SharedPreferencesUtil
 import com.mcaserta.neontest.utils.Utils
@@ -36,6 +37,7 @@ class SendMoneyViewModel(private val context: Context) : Observable() {
     var isLoading = ObservableField<Boolean>(false)
     var showAnimation = ObservableField<Boolean>(false)
     var repository: TransferRepository = TransferRepository()
+    var tokenRepository: TokenRepository = TokenRepository()
     var message = ObservableField<String>()
     val success = ObservableField<Boolean>(false)
 
@@ -53,17 +55,40 @@ class SendMoneyViewModel(private val context: Context) : Observable() {
     }
 
     fun sendMoney() {
+        isLoading.set(true)
+        setChanged()
+        notifyObservers(LOADING_CALLED)
+
+        if (SharedPreferencesUtil(context as Activity).get(SharedPreferencesUtil.SHARED_TOKEN).isNullOrEmpty()) {
+            tokenRepository.generateToken(Utils.getAuthUser().user) { error, response, _ ->
+                if (error) {
+                    isLoading.set(false)
+                    showAnimation.set(true)
+                    setChanged()
+
+                    success.set(false)
+                    message.set(context.getString(R.string.error_msg))
+                    notifyObservers(SHOW_ERROR_ANIM)
+                } else {
+                    SharedPreferencesUtil(context).save(SharedPreferencesUtil.SHARED_TOKEN, response!!)
+                    sendRequest()
+                }
+            }
+        } else {
+            sendRequest()
+        }
+    }
+
+    private fun sendRequest() {
         val transfer = Transfer(
             0,
             contact!!.id,
             SharedPreferencesUtil((context as Activity)).get(SharedPreferencesUtil.SHARED_TOKEN)!!,
-            moneyValue.get().toString().keepOnlyNumbers().toDouble()
+            moneyValue.get().toString().keepOnlyNumbers().toDouble(),
+            contact
         )
 
-        isLoading.set(true)
-        setChanged()
-        notifyObservers(LOADING_CALLED)
-        repository.sendMoney(transfer) { error, response, errorMessage ->
+        repository.sendMoney(transfer) { error, _, _ ->
             isLoading.set(false)
             showAnimation.set(true)
             setChanged()

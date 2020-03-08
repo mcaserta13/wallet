@@ -8,18 +8,16 @@ import com.mcaserta.neontest.R
 import com.mcaserta.neontest.data.model.User
 import com.mcaserta.neontest.databinding.ActivityHomeBinding
 import com.mcaserta.neontest.ui.config.gotoContactList
+import com.mcaserta.neontest.ui.config.gotoTransferHistory
 import com.mcaserta.neontest.utils.SharedPreferencesUtil
+import com.mcaserta.neontest.utils.Utils
 import com.mcaserta.neontest.viewmodel.UserViewModel
 import java.util.*
 
 class HomeActivity : AppCompatActivity(), Observer {
 
     private lateinit var binding: ActivityHomeBinding
-    private lateinit var viewModel: UserViewModel
-
-    init {
-        getAuthUser()
-    }
+    private var viewModel: UserViewModel = Utils.getAuthUser()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,13 +45,10 @@ class HomeActivity : AppCompatActivity(), Observer {
         if (arg != null) {
             when (arg.toString()) {
                 UserViewModel.SHOW_CONTACT_LIST -> gotoContactList()
-                UserViewModel.SHOW_TRANSFER_HISTORY -> null // TODO enviar para a tela de histórico de transações
+                UserViewModel.SHOW_TRANSFER_HISTORY -> gotoTransferHistory()
             }
         }
     }
 
-    // Obter o usuário autenticado (mock)
-    private fun getAuthUser() {
-        viewModel = UserViewModel(User("Maurício Caserta", "mauriciocaserta@gmail.com"))
-    }
+
 }

@@ -25,7 +25,7 @@ class RetrofitClient {
             httpClient.addInterceptor(logging)
 
             return Retrofit.Builder()
-                .baseUrl("https://de6a863a-a5b1-4284-9612-5eaf0f9ec644.mock.pstmn.io/")
+                .baseUrl("https://96e6cf34-3d0d-43de-8754-7744c0261654.mock.pstmn.io/")
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(httpClient.build())
                 .build()

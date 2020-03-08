@@ -3,6 +3,8 @@ package com.mcaserta.neontest.utils
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.os.Build
+import com.mcaserta.neontest.data.model.User
+import com.mcaserta.neontest.viewmodel.UserViewModel
 import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.util.*
@@ -25,6 +27,11 @@ class Utils {
 
         fun getImageByName(imgName: String, context: Context): Drawable? {
             return Drawable.createFromStream(context.assets.open("img/$imgName"), null)
+        }
+
+        // Obter o usuário autenticado (mock)
+        fun getAuthUser() : UserViewModel {
+            return UserViewModel(User("Maurício Caserta", "mauriciocaserta@gmail.com"))
         }
     }
 }

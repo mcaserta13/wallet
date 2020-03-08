@@ -24,7 +24,11 @@ class TokenRepository {
             }
 
             override fun onResponse(call: Call<String>, response: Response<String>) {
-                onResult(false, response.body(), null)
+                if (response.code() == 200) {
+                    onResult(false, response.body(), null)
+                } else {
+                    onResult(true, null, response.message())
+                }
             }
         })
     }

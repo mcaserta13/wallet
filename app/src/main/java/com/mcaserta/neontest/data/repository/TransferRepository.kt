@@ -24,7 +24,11 @@ class TransferRepository {
             }
 
             override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
-                onResult(false, response.body(), null)
+                if (response.code() == 200) {
+                    onResult(false, response.body(), null)
+                } else {
+                    onResult(true, null, response.message())
+                }
             }
         })
     }
@@ -39,7 +43,11 @@ class TransferRepository {
                 call: Call<ArrayList<Transfer>>,
                 response: Response<ArrayList<Transfer>>
             ) {
-                onResult(false, response.body(), null)
+                if (response.code() == 200) {
+                    onResult(false, response.body(), null)
+                } else {
+                    onResult(true, null, response.message())
+                }
             }
         })
     }
